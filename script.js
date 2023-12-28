@@ -34,6 +34,7 @@ const account4 = {
 };
 
 const accounts = [account1, account2, account3, account4];
+// console.log(accounts);
 
 // Elements
 const labelWelcome = document.querySelector('.welcome');
@@ -69,7 +70,6 @@ const displayMovements = function (movements) {
   containerMovements.innerHTML = '';
 
   movements.forEach(function (value, index) {
-
     /* SPECIFYING THE TYPE OF TRANSFER */
     const type = value > 0 ? 'deposit' : 'withdrawal';
 
@@ -79,7 +79,6 @@ const displayMovements = function (movements) {
         <div class="movements__type movements__type--${type}">${index + 1} ${type}</div>
         <div class="movements__value">${value}$</div>
       </div >`
-    console.log(html);
 
     containerMovements.insertAdjacentHTML('afterbegin', html);
   })
