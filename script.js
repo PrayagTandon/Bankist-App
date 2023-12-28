@@ -66,14 +66,10 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 const displayMovements = function (movements) {
 
-  /* CLEAR THE HARDCODED DATA */
   containerMovements.innerHTML = '';
 
   movements.forEach(function (value, index) {
-    /* SPECIFYING THE TYPE OF TRANSFER */
     const type = value > 0 ? 'deposit' : 'withdrawal';
-
-    /* USING TEMPLATE LITERAL TO CREATE A VARIABLE */
     const html =
       `<div class="movements__row">
         <div class="movements__type movements__type--${type}">${index + 1} ${type}</div>
@@ -88,3 +84,19 @@ displayMovements(account1.movements);
 // displayMovements(account2.movements);
 // displayMovements(account3.movements);
 // displayMovements(account4.movements);
+
+/* COMPUTING USERNAMES - USING GLOBAL VARIABLE
+const user = 'Steven Thomas Williams';
+const finalUserName = user.toLowerCase().split(' ').map(function (arr) {
+  return arr[0];
+}).join('');
+console.log(finalUserName);
+*/
+
+/*    BY CREATING A FUNCTION     */
+
+const finalUserName = function (accs) {
+
+}
+
+console.log(finalUserName(accounts));
