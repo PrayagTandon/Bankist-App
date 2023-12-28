@@ -65,6 +65,15 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 const displayMovements = function (movements) {
   movements.forEach(function (value, index) {
-
+    // console.log(value);
+    /* USING TEMPLATE LITERAL TO CREATE A VARIABLE */
+    const html =
+      `<div class="movements__row">
+        <div class="movements__type movements__type--deposit">${index + 1}</div>
+        <div class="movements__value">${value}</div>
+      </div >`
+    console.log(html);
   })
 }
+
+displayMovements(account1.movements);
