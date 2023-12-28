@@ -64,10 +64,9 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 // CREATING FUNCTIONS
 
+/*  FUNCTION TO ADD HTML ELEMNETS FOR EACH TRANSACTION   */
 const displayMovements = function (movements) {
-
   containerMovements.innerHTML = '';
-
   movements.forEach(function (value, index) {
     const type = value > 0 ? 'deposit' : 'withdrawal';
     const html =
@@ -75,7 +74,6 @@ const displayMovements = function (movements) {
         <div class="movements__type movements__type--${type}">${index + 1} ${type}</div>
         <div class="movements__value">${value}$</div>
       </div >`
-
     containerMovements.insertAdjacentHTML('afterbegin', html);
   })
 }
@@ -95,11 +93,10 @@ console.log(finalUserName);
 
 /*    BY CREATING A FUNCTION     */
 
-const finalUserName = function (accs) {
+const createUserName = function (accs) {
   accs.forEach(function (acc) {
     acc.userName = acc.owner.toLowerCase().split(' ').map(arr => arr[0]).join('');
   });
 };
-
-finalUserName(accounts);
+createUserName(accounts);
 console.log(accounts);
