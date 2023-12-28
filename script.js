@@ -64,11 +64,15 @@ const inputClosePin = document.querySelector('.form__input--pin');
 // CREATING FUNCTIONS
 
 const displayMovements = function (movements) {
-  movements.forEach(function (value, index) {
 
+  /* CLEAR THE HARDCODED DATA */
+  containerMovements.innerHTML = '';
+
+  movements.forEach(function (value, index) {
 
     /* SPECIFYING THE TYPE OF TRANSFER */
     const type = value > 0 ? 'deposit' : 'withdrawal';
+
     /* USING TEMPLATE LITERAL TO CREATE A VARIABLE */
     const html =
       `<div class="movements__row">
@@ -82,3 +86,6 @@ const displayMovements = function (movements) {
 }
 
 displayMovements(account1.movements);
+// displayMovements(account2.movements);
+// displayMovements(account3.movements);
+// displayMovements(account4.movements);
