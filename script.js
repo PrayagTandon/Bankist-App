@@ -96,7 +96,10 @@ console.log(finalUserName);
 /*    BY CREATING A FUNCTION     */
 
 const finalUserName = function (accs) {
+  accs.forEach(function (acc) {
+    acc.userName = acc.owner.toLowerCase().split(' ').map(arr => arr[0]).join('');
+  });
+};
 
-}
-
-console.log(finalUserName(accounts));
+finalUserName(accounts);
+console.log(accounts);
