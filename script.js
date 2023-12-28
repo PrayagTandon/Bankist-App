@@ -65,14 +65,19 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 const displayMovements = function (movements) {
   movements.forEach(function (value, index) {
-    // console.log(value);
+
+
+    /* SPECIFYING THE TYPE OF TRANSFER */
+    const type = value > 0 ? 'deposit' : 'withdrawal';
     /* USING TEMPLATE LITERAL TO CREATE A VARIABLE */
     const html =
       `<div class="movements__row">
-        <div class="movements__type movements__type--deposit">${index + 1}</div>
-        <div class="movements__value">${value}</div>
+        <div class="movements__type movements__type--${type}">${index + 1} ${type}</div>
+        <div class="movements__value">${value}$</div>
       </div >`
     console.log(html);
+
+    containerMovements.insertAdjacentHTML('afterbegin', html);
   })
 }
 
