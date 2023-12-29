@@ -64,7 +64,7 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 // CREATING FUNCTIONS
 
-/*  FUNCTION TO ADD HTML ELEMNETS FOR EACH TRANSACTION   */
+/*  FUNCTION TO ADD HTML ELEMENTS FOR EACH TRANSACTION   */
 const displayMovements = function (movements) {
   containerMovements.innerHTML = '';
   movements.forEach(function (value, index) {
@@ -79,9 +79,6 @@ const displayMovements = function (movements) {
 }
 
 displayMovements(account1.movements);
-// displayMovements(account2.movements);
-// displayMovements(account3.movements);
-// displayMovements(account4.movements);
 
 /* COMPUTING USERNAMES - USING GLOBAL VARIABLE
 const user = 'Steven Thomas Williams';
@@ -92,7 +89,6 @@ console.log(finalUserName);
 */
 
 /*    BY CREATING A FUNCTION     */
-
 const createUserName = function (accs) {
   accs.forEach(function (acc) {
     acc.userName = acc.owner.toLowerCase().split(' ').map(arr => arr[0]).join('');
