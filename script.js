@@ -88,6 +88,9 @@ const calcDisplayBalance = function (movements) {
 };
 calcDisplayBalance(account1.movements);
 
+/* COMPUTING A FUNCTION TO DISPLAY INCOME, OUTGOING AND THE INTEREST */
+
+
 
 /* COMPUTING USERNAMES */
 const createUserName = function (accs) {
