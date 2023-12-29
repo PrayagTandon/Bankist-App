@@ -72,23 +72,24 @@ const displayMovements = function (movements) {
     const html =
       `<div class="movements__row">
         <div class="movements__type movements__type--${type}">${index + 1} ${type}</div>
-        <div class="movements__value">${value}$</div>
+        <div class="movements__value">${value}</div>
       </div >`
     containerMovements.insertAdjacentHTML('afterbegin', html);
   })
 }
-
 displayMovements(account1.movements);
 
-/* COMPUTING USERNAMES - USING GLOBAL VARIABLE
-const user = 'Steven Thomas Williams';
-const finalUserName = user.toLowerCase().split(' ').map(function (arr) {
-  return arr[0];
-}).join('');
-console.log(finalUserName);
-*/
+/* COMPUTING THE TOTAL BALANCE  */
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce(function (acc, mov) {
+    return acc + mov;
+  })
+  labelBalance.textContent = `${balance} EUR`;
+};
+calcDisplayBalance(account1.movements);
 
-/*    BY CREATING A FUNCTION     */
+
+/* COMPUTING USERNAMES */
 const createUserName = function (accs) {
   accs.forEach(function (acc) {
     acc.userName = acc.owner.toLowerCase().split(' ').map(arr => arr[0]).join('');
