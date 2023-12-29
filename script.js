@@ -72,7 +72,7 @@ const displayMovements = function (movements) {
     const html =
       `<div class="movements__row">
         <div class="movements__type movements__type--${type}">${index + 1} ${type}</div>
-        <div class="movements__value">${value}</div>
+        <div class="movements__value">${value}€</div>
       </div >`
     containerMovements.insertAdjacentHTML('afterbegin', html);
   })
@@ -84,13 +84,33 @@ const calcDisplayBalance = function (movements) {
   const balance = movements.reduce(function (acc, mov) {
     return acc + mov;
   })
-  labelBalance.textContent = `${balance} EUR`;
+  labelBalance.textContent = `${balance}€`;
 };
 calcDisplayBalance(account1.movements);
 
 /* COMPUTING A FUNCTION TO DISPLAY INCOME, OUTGOING AND THE INTEREST */
 
+const calcDisplaySummary = function (movements) {
 
+  /* COMPUTING INCOMING TRANSACTIONS */
+  const incomes = movements
+    .filter((deposit) => deposit > 0)
+    .reduce((acc, currDeposit) => acc + currDeposit, 0);
+  labelSumIn.textContent = `${incomes}€`
+
+  /* COMPUTING OUTGOING TRANSACTIONS */
+  const outcomes = movements
+    .filter((deposit) => deposit < 0)
+    .reduce((acc, currDeposit) => acc + currDeposit, 0);
+  labelSumOut.textContent = `${Math.abs(outcomes)}€`
+
+  /* COMPUTING INTEREST INCURRED FOR EACH DEPOSIT 
+  Logic - For every deposit made the bank gives an interest of 1.2% and adds it to the total interest if the interest value is greater than 1€.
+  */
+
+}
+
+calcDisplaySummary(account1.movements);
 
 /* COMPUTING USERNAMES */
 const createUserName = function (accs) {
@@ -99,4 +119,3 @@ const createUserName = function (accs) {
   });
 };
 createUserName(accounts);
-console.log(accounts);
