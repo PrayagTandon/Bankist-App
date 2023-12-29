@@ -107,7 +107,13 @@ const calcDisplaySummary = function (movements) {
   /* COMPUTING INTEREST INCURRED FOR EACH DEPOSIT 
   Logic - For every deposit made the bank gives an interest of 1.2% and adds it to the total interest if the interest value is greater than 1€.
   */
-
+  const interests = movements
+    .filter((deposit) => deposit > 0)
+    .map((filteredDeposits) => filteredDeposits * 1.2 / 100)
+    .filter((interestArr) => interestArr > 1)
+    .reduce((acc, interest) => acc + interest)
+  console.log(interests);
+  labelSumInterest.textContent = `${interests}€`
 }
 
 calcDisplaySummary(account1.movements);
