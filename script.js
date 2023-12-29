@@ -115,7 +115,6 @@ const calcDisplaySummary = function (movements) {
   console.log(interests);
   labelSumInterest.textContent = `${interests}€`
 }
-
 calcDisplaySummary(account1.movements);
 
 /* COMPUTING USERNAMES */
