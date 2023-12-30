@@ -77,7 +77,6 @@ const displayMovements = function (movements) {
     containerMovements.insertAdjacentHTML('afterbegin', html);
   })
 }
-displayMovements(account1.movements);
 
 /* COMPUTING THE TOTAL BALANCE  */
 const calcDisplayBalance = function (movements) {
@@ -86,7 +85,6 @@ const calcDisplayBalance = function (movements) {
   })
   labelBalance.textContent = `${balance}€`;
 };
-calcDisplayBalance(account1.movements);
 
 /* COMPUTING A FUNCTION TO DISPLAY INCOME, OUTGOING AND THE INTEREST */
 
@@ -114,7 +112,6 @@ const calcDisplaySummary = function (movements) {
     .reduce((acc, interest) => acc + interest)
   labelSumInterest.textContent = `${interests}€`
 }
-calcDisplaySummary(account1.movements);
 
 /* COMPUTING USERNAMES */
 const createUserName = function (accs) {
@@ -133,17 +130,24 @@ btnLogin.addEventListener('click', function (e) {
 
   // CHECK IF THE USERNAME AND PIN IS CORRECT
   const userAcc = accounts.find((acc) => inputLoginUsername.value === acc.userName);
-  console.log(userAcc);
 
-  if (userAcc.pin === Number(inputLoginPin.value)) {
-    console.log(`LOGIN`);
+  if (userAcc?.pin === Number(inputLoginPin.value)) {
+
+    //DISPLAY UI AND WELCOME MESSAGE 
+    labelWelcome.textContent = `Welcome back, ${userAcc.owner.split(' ')[0]}`;
+    containerApp.style.opacity = 100;
+    inputLoginUsername.value = inputLoginPin.value = '';
+    inputLoginPin.blur();
+
+    // COMPUTE THE MOVEMENTS
+    displayMovements(userAcc.movements);
+
+    // COMPUTE THE BALANCE
+    calcDisplayBalance(userAcc.movements);
+
+    // COMPUTE THE SUMMARY
+    calcDisplaySummary(userAcc.movements);
+
   }
 
-  //DISPLAY UI AND WELCOME MESSAGE 
-
-  // CALCULATE THE TRANSACTIONS
-
-  // COMPUTE THE BALANCE
-
-  // COMPUTE THE SUMMARY
 })
