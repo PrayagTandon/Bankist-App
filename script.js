@@ -88,16 +88,16 @@ const calcDisplayBalance = function (movements) {
 
 /* COMPUTING A FUNCTION TO DISPLAY INCOME, OUTGOING AND THE INTEREST */
 
-const calcDisplaySummary = function (movements) {
+const calcDisplaySummary = function (account) {
 
   /* COMPUTING INCOMING TRANSACTIONS */
-  const incomes = movements
+  const incomes = account.movements
     .filter((deposit) => deposit > 0)
     .reduce((acc, currDeposit) => acc + currDeposit, 0);
   labelSumIn.textContent = `${incomes}€`
 
   /* COMPUTING OUTGOING TRANSACTIONS */
-  const outcomes = movements
+  const outcomes = account.movements
     .filter((deposit) => deposit < 0)
     .reduce((acc, currDeposit) => acc + currDeposit, 0);
   labelSumOut.textContent = `${Math.abs(outcomes)}€`
@@ -105,9 +105,9 @@ const calcDisplaySummary = function (movements) {
   /* COMPUTING INTEREST INCURRED FOR EACH DEPOSIT 
   Logic - For every deposit made the bank gives an interest of 1.2% and adds it to the total interest if the interest value is greater than 1€.
   */
-  const interests = movements
+  const interests = account.movements
     .filter((deposit) => deposit > 0)
-    .map((filteredDeposits) => filteredDeposits * 1.2 / 100)
+    .map((filteredDeposits) => (filteredDeposits * account.interestRate) / 100)
     .filter((interestArr) => interestArr > 1)
     .reduce((acc, interest) => acc + interest)
   labelSumInterest.textContent = `${interests}€`
@@ -146,8 +146,14 @@ btnLogin.addEventListener('click', function (e) {
     calcDisplayBalance(userAcc.movements);
 
     // COMPUTE THE SUMMARY
-    calcDisplaySummary(userAcc.movements);
-
+    calcDisplaySummary(userAcc);
+  }
+  else {
+    containerApp.style.opacity = 0;
+    labelWelcome.textContent = `Log in to get started`;
+    alert(`Wrong Credentials entered⛔⛔⛔⛔`);
+    inputLoginUsername.value = inputLoginPin.value = '';
+    inputLoginPin.blur();
   }
 
 })
