@@ -112,7 +112,6 @@ const calcDisplaySummary = function (movements) {
     .map((filteredDeposits) => filteredDeposits * 1.2 / 100)
     .filter((interestArr) => interestArr > 1)
     .reduce((acc, interest) => acc + interest)
-  console.log(interests);
   labelSumInterest.textContent = `${interests}€`
 }
 calcDisplaySummary(account1.movements);
@@ -124,6 +123,27 @@ const createUserName = function (accs) {
   });
 };
 createUserName(accounts);
+// console.log(accounts);
 
 
 // EVENT LISTENERS
+btnLogin.addEventListener('click', function (e) {
+  // To prevent Default behaviour of Form button
+  e.preventDefault();
+
+  // CHECK IF THE USERNAME AND PIN IS CORRECT
+  const userAcc = accounts.find((acc) => inputLoginUsername.value === acc.userName);
+  console.log(userAcc);
+
+  if (userAcc.pin === Number(inputLoginPin.value)) {
+    console.log(`LOGIN`);
+  }
+
+  //DISPLAY UI AND WELCOME MESSAGE 
+
+  // CALCULATE THE TRANSACTIONS
+
+  // COMPUTE THE BALANCE
+
+  // COMPUTE THE SUMMARY
+})
