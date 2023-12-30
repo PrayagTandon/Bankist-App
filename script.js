@@ -124,3 +124,6 @@ const createUserName = function (accs) {
   });
 };
 createUserName(accounts);
+
+
+// EVENT LISTENERS
