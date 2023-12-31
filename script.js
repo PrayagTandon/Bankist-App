@@ -162,7 +162,6 @@ btnLogin.addEventListener('click', function (e) {
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
   }
-
 })
 
 /* TRANSFER OPERATION */
@@ -182,3 +181,5 @@ btnTransfer.addEventListener('click', function (e) {
     updateUI(userAcc);
   }
 })
+
+/* ACCOUNT DELETION */
