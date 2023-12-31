@@ -188,7 +188,24 @@ btnTransfer.addEventListener('click', function (e) {
 })
 
 /* REQUEST LOAN */
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+  const amount = Number(inputLoanAmount.value);
 
+  if (amount > 0 && userAcc.movements.some(mov => mov >= (amount * 0.1))) {
+    userAcc.movements.push(amount);
+
+    // UPDATE UI
+    updateUI(userAcc);
+
+    // RESET
+    inputLoanAmount.value = ''
+    inputLoanAmount.blur();
+  }
+  else {
+    alert(`The requested Amount (${amount}) is INVALID⛔ \n The amount requested should not be greater than 10% of any deposit you have made.`);
+  }
+})
 
 /* CLOSE ACCOUNT */
 btnClose.addEventListener('click', function (e) {
