@@ -64,6 +64,12 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 // CREATING FUNCTIONS
 
+/* RESET UI */
+const resetUI = function () {
+  containerApp.style.opacity = 0;
+  labelWelcome.textContent = `Log in to get started`;
+}
+
 /*  FUNCTION TO ADD HTML ELEMENTS FOR EACH TRANSACTION   */
 const displayMovements = function (movements) {
   containerMovements.innerHTML = '';
@@ -156,8 +162,7 @@ btnLogin.addEventListener('click', function (e) {
 
   }
   else {
-    containerApp.style.opacity = 0;
-    labelWelcome.textContent = `Log in to get started`;
+    resetUI();
     alert(`Wrong Credentials entered⛔⛔⛔⛔`);
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
@@ -191,5 +196,10 @@ btnClose.addEventListener('click', function (e) {
     // DELETE DATA
     const index = accounts.findIndex(account => userAcc.userName === account.userName)
     accounts.splice(index, 1);
+
+    // UPDATE UI
+    resetUI();
+
+    inputTransferTo.value = inputTransferAmount.value = '';
   }
 })
