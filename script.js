@@ -183,3 +183,13 @@ btnTransfer.addEventListener('click', function (e) {
 })
 
 /* ACCOUNT DELETION */
+btnClose.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  if (inputCloseUsername.value === userAcc.userName && Number(inputClosePin.value) === userAcc.pin) {
+
+    // DELETE DATA
+    const index = accounts.findIndex(account => userAcc.userName === account.userName)
+    accounts.splice(index, 1);
+  }
+})
