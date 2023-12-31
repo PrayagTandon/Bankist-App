@@ -187,7 +187,10 @@ btnTransfer.addEventListener('click', function (e) {
   }
 })
 
-/* ACCOUNT DELETION */
+/* REQUEST LOAN */
+
+
+/* CLOSE ACCOUNT */
 btnClose.addEventListener('click', function (e) {
   e.preventDefault();
 
