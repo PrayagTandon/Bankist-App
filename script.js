@@ -71,9 +71,12 @@ const resetUI = function () {
 };
 
 /*  FUNCTION TO ADD HTML ELEMENTS FOR EACH TRANSACTION   */
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
   containerMovements.innerHTML = '';
-  movements.forEach(function (value, index) {
+
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+
+  movs.forEach(function (value, index) {
     const type = value > 0 ? 'deposit' : 'withdrawal';
     const html =
       `<div class="movements__row">
@@ -159,6 +162,7 @@ btnLogin.addEventListener('click', function (e) {
 
     //UPDATE UI
     updateUI(userAcc);
+    sorted = false;
 
   }
   else {
@@ -223,4 +227,12 @@ btnClose.addEventListener('click', function (e) {
     inputTransferTo.value = inputTransferAmount.value = '';
   }
 });
+
+/* SORTING THE MOVEMENTS */
+let sorted = false;
+btnSort.addEventListener('click', function (e) {
+  e.preventDefault();
+  displayMovements(userAcc.movements, !sorted);
+  sorted = !sorted;
+})
 
