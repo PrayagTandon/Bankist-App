@@ -68,7 +68,7 @@ const inputClosePin = document.querySelector('.form__input--pin');
 const resetUI = function () {
   containerApp.style.opacity = 0;
   labelWelcome.textContent = `Log in to get started`;
-}
+};
 
 /*  FUNCTION TO ADD HTML ELEMENTS FOR EACH TRANSACTION   */
 const displayMovements = function (movements) {
@@ -82,7 +82,7 @@ const displayMovements = function (movements) {
       </div >`
     containerMovements.insertAdjacentHTML('afterbegin', html);
   })
-}
+};
 
 /* COMPUTING THE TOTAL BALANCE  */
 const calcDisplayBalance = function (account) {
@@ -117,7 +117,7 @@ const calcDisplaySummary = function (account) {
     .filter((interestArr) => interestArr > 1)
     .reduce((acc, interest) => acc + interest)
   labelSumInterest.textContent = `${interests}€`
-}
+};
 
 /* COMPUTING USERNAMES */
 const createUserName = function (accs) {
@@ -136,7 +136,7 @@ const updateUI = function (acc) {
 
   // COMPUTE THE SUMMARY
   calcDisplaySummary(acc);
-}
+};
 
 
 // EVENT LISTENERS
@@ -167,7 +167,7 @@ btnLogin.addEventListener('click', function (e) {
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
   }
-})
+});
 
 /* TRANSFER OPERATION */
 btnTransfer.addEventListener('click', function (e) {
@@ -185,7 +185,7 @@ btnTransfer.addEventListener('click', function (e) {
     //UPDATE UI
     updateUI(userAcc);
   }
-})
+});
 
 /* REQUEST LOAN */
 btnLoan.addEventListener('click', function (e) {
@@ -205,7 +205,7 @@ btnLoan.addEventListener('click', function (e) {
   else {
     alert(`The requested Amount (${amount}) is INVALID⛔ \n The amount requested should not be greater than 10% of any deposit you have made.`);
   }
-})
+});
 
 /* CLOSE ACCOUNT */
 btnClose.addEventListener('click', function (e) {
@@ -222,4 +222,5 @@ btnClose.addEventListener('click', function (e) {
 
     inputTransferTo.value = inputTransferAmount.value = '';
   }
-})
+});
+
